@@ -1,16 +1,18 @@
 var highscorecount = 0;
 var chosenAnswer = true;
 
+
 var startquizEl = document.querySelector("#startquiz");
 var highscorecountEl = document.querySelector("#highscorecount");
 var timerEl = document.getElementById('timeremaining')
 
 var questions = [ //these are the questions
-    {q: "What year is it 1?", a:"20201", b:"20191", c:"20181", d:"20171"},
-    {q: "What year is it 2?", a:"20202", b:"20192", c:"20182", d:"20172"},
-    {q: "What year is it 3?", a:"20203", b:"20193", c:"20183", d:"20173"} //last question
+    {q: "What year is it?...freebie question", a:"2020", b:"2019", c:"2018", d:"2017"},
+    {q: "A useful tool used during development and debugging for printing content to the debugger is?", a:"javascript", b:"terminal/bash", c:"for loops", d:"console log"},
+    {q: "String values must be enclosed within _____ when being assigned to variables", a:"commas", b:"curly brackets", c:"quotes", d:"parenthesis"},
+    {q: "True or False: The DOM is built into the Javascript Language", a:"True", b:"False", c:"empty", d:"empty"},
+    {q: "var word = 'cat'; var letter = word[0]; What is letter?", a:"cat", b:"word", c:"c", d:"a"},
 ]
-
     
 
 function setCounterText() { // Set Counter function; called by High Score Count button
@@ -31,6 +33,7 @@ function starttimer() { //Start Timer function; called by Start Game button
     
       timeLeft--
   
+
       if (timeLeft === 0) {
         timerEl.textContent = '';
         clearInterval(timeInterval)
