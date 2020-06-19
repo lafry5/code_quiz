@@ -8,29 +8,33 @@
 </head>
 
 <body>
-    <div>
-        <h1>Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-        <div class="container">
-          <button id="startquiz">Start Quiz</button>
-        </div>
+    <div class="container">
+        <h1 class="start">Coding Quiz Challenge</h1>
+        <p class="intro">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="startquiz">Start Quiz</button>
     </div>
 
-    <h2>The following are your quiz questions. Select 'Next question' for each new question.</h2>
-    <p id="question">Question1</p>
-    <input id="answer1" type="radio" name="answer1" value="">
-    <label id="label1" for="answer1">Answer1</label>
+    <h3 id="highscorecount"></h3>
+    <h4 id="timeremaining"></h4>
+    
+    <div class="questionsection">
+        <h2>The following are your quiz questions. Select 'Next question' for each new question.</h2>
+        <p id="question">Question1</p>
+        <input id="answer1" type="radio" name="answer1" value="">
+        <label id="label1" for="answer1">Answer1</label>
 
-    <input id="answer2" type="radio" name="answer2" value="">
-    <label id="label2" for="answer2">Answer2</label>
+        <input id="answer2" type="radio" name="answer2" value="">
+        <label id="label2" for="answer2">Answer2</label>
 
-    <input id="answer3" type="radio" name="answer3" value="">
-    <label id="label3" for="answer3">Answer3</label>
+        <input id="answer3" type="radio" name="answer3" value="">
+        <label id="label3" for="answer3">Answer3</label>
 
-    <input id="answer4" type="radio" name="answer4" value="">
-    <label id="label4" for="answer4">Answer4</label>
+        <input id="answer4" type="radio" name="answer4" value="">
+        <label id="label4" for="answer4">Answer4</label>
 
-    <button id="test">Next question</button>
+        <button id="test">Next question</button>
+    </div>
+
     <script src="./script.js"></script>
 </body>
 

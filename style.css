@@ -16,6 +16,10 @@ h2 {
 #question {
   text-align: left;
 }
+
+#score {
+  text-align: left;
+}
   
   .container {
     text-align: center;

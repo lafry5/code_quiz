@@ -3,6 +3,7 @@ var chosenAnswer = true;
 
 var startquizEl = document.querySelector("#startquiz");
 var highscorecountEl = document.querySelector("#highscorecount");
+var timerEl = document.getElementById('timeremaining')
 
 var questions = [ //these are the questions
     {q: "What year is it 1?", a:"20201", b:"20191", c:"20181", d:"20171"},
@@ -14,12 +15,29 @@ var questions = [ //these are the questions
 
 function setCounterText() { // Set Counter function; called by High Score Count button
     highscorecountEl.textContent = highscorecount;
+    highscorecountEl.textContent = highscorecount + ' high score';
     console.log(highscorecount);
+
 }
 
 function starttimer() { //Start Timer function; called by Start Game button
     //add starttimer code here
     console.log("executed start timer")
+
+    var timeLeft = 75
+
+    var timeInterval = setInterval(function () {
+      timerEl.textContent = timeLeft + ' seconds remaining';
+    
+      timeLeft--
+  
+      if (timeLeft === 0) {
+        timerEl.textContent = '';
+        clearInterval(timeInterval)
+        setCounterText();
+      }
+    }, 1000)
+
 }
 
 function startgame() { //Start Game Function; called by Start Quiz function
@@ -83,5 +101,4 @@ startquizEl.addEventListener("click", function() { //Start Quiz button actions u
 highscorecountEl.addEventListener("click", function() { //High Score count button actions upon click
     setCounterText();
     console.log("executed set counter text");
-}
-)
+})
