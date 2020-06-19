@@ -1,4 +1,5 @@
 var highscorecount = 0;
+
 // Old code below for reference
 //var incrementEl = document.querySelector("#increment");
 //var decrementEl = document.querySelector("#decrement");
@@ -34,8 +35,8 @@ function starttimer() {
 }
 
 function startgame() {
-    starttimer();
     //add startgame code here
+    starttimer();
     console.log("executed start game");
     }
 
