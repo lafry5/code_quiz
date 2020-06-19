@@ -7,6 +7,15 @@ h1 {
 p {
     text-align: center;
 }
+
+
+h2 {
+  text-align: left;
+}
+
+#question {
+  text-align: left;
+}
   
   .container {
     text-align: center;

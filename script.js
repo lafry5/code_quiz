@@ -56,7 +56,7 @@ function startgame() { //Start Game Function; called by Start Quiz function
     answer.addEventListener("click", function(){
         console.log(event)  //"unable to get property add event listener"
         var chosenAnswer = event.target.value;
-        //document.getElementById( "someDiv" ).onclick = null;  //how do I clear the click?
+        
 
     if(chosenAnswer == "true") {               //should this be inside the event listener?
         // do something
@@ -64,9 +64,10 @@ function startgame() { //Start Game Function; called by Start Quiz function
     } else {
         // do something else
     } // end of if statement
-
+    
 
     }) //end of answer.addEventListener function
+    document.querySelector('input[type=radio]:checked').checked = false;
     }) //end of button.addEventListener function
 } //end of startgame function
 
