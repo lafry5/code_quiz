@@ -1,18 +1,30 @@
 var highscorecount = 0;
 var chosenAnswer = true;
+var answer = document.querySelector(".choices");
+console.log(answer);
 
 
 var startquizEl = document.querySelector("#startquiz");
 var highscorecountEl = document.querySelector("#highscorecount");
 var timerEl = document.getElementById('timeremaining')
 
-var questions = [ //these are the questions
-    {q: "What year is it?...freebie question", a:"2020", b:"2019", c:"2018", d:"2017"},
-    {q: "A useful tool used during development and debugging for printing content to the debugger is?", a:"javascript", b:"terminal/bash", c:"for loops", d:"console log"},
-    {q: "String values must be enclosed within _____ when being assigned to variables", a:"commas", b:"curly brackets", c:"quotes", d:"parenthesis"},
-    {q: "True or False: The DOM is built into the Javascript Language", a:"True", b:"False", c:"empty", d:"empty"},
-    {q: "var word = 'cat'; var letter = word[0]; What is letter?", a:"cat", b:"word", c:"c", d:"a"},
+var questions = [ //these are the questions and answers
+    {q: "What year is it?...freebie question", a:"2020", b:"2019", c:"2018", d:"2017", correct: "a"},
+    {q: "A useful tool used during development and debugging for printing content to the debugger is?", a:"javascript", b:"terminal/bash", c:"for loops", d:"console log", correct: "d"},
+    {q: "String values must be enclosed within _____ when being assigned to variables", a:"commas", b:"curly brackets", c:"quotes", d:"parenthesis", correct: "b"},
+    {q: "True or False: The DOM is built into the Javascript Language", a:"True", b:"False", c:"empty", d:"empty", correct: "b"},
+    {q: "var word = 'cat'; var letter = word[0]; What is letter?", a:"cat", b:"word", c:"c", d:"a", correct: "c"},
+    {q: "What is the default boolean value", a:"True", b:"False", c:"empty", d:"empty", correct: "a"},
+    {q: "What code is least likely to be found when setting a timer?", a:"setInterval", b:"clearInterval", c:"addEventListener", d:"timeLeft", correct: "c"},
+    {q: "What is the opposite code of clearInterval", a:"setInterval", b:"setCounterText", c:"starttimer", d:"empty", correct: "a"},
+    {q: "What code zeroes out an array", a:"test.length[]=0", b:"test=0", c:"test", d:"empty", correct: "a"},
+    {q: "var a = 1 is a string", a:"True", b:"False", c:"empty", d:"empty", correct: "b"},
+    {q: "!= represents", a:"Comment out code in HTML", b:"Does not equal", c:"Emphatic end to a sentence", d:"empty", correct: "b"},
+    {q: "A confirm prompt results in two options on the screen", a:"True", b:"False", c:"empty", d:"empty", correct: "a"},
+    {q: "TBD", a:"True", b:"False", c:"empty", d:"empty", correct: "a"},
+
 ]
+
     
 
 function setCounterText() { // Set Counter function; called by High Score Count button
@@ -70,16 +82,15 @@ function startgame() { //Start Game Function; called by Start Quiz function
     label.innerText = questions[i].d
 
     i++
-    var answer = document.getElementById("answer1") //   why is this answer1?
-    answer.value = label.innerText = questions[2].a //   why is this two?
-
+    correctAnswer = questions[i].correct
+    console.log(correctAnswer) // This is printing out
 
     answer.addEventListener("click", function(){
         console.log(event)  //"unable to get property add event listener"
         var chosenAnswer = event.target.value;
-        
 
-    if(chosenAnswer == "true") {               //should this be inside the event listener?
+
+    if(chosenAnswer == correctAnsewr) {               //should this be inside the event listener?
         // do something
         console.log("executed chosenAnswer is true")
     } else {
