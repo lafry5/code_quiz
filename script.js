@@ -49,7 +49,7 @@ function starttimer() { //Start Timer function; called by Start Game button
       if (timeLeft === 0) {
         timerEl.textContent = '';
         clearInterval(timeInterval)
-        setCounterText();
+        setCounterText(); //print out high score !!
       }
     }, 1000)
 
@@ -81,26 +81,43 @@ function startgame() { //Start Game Function; called by Start Quiz function
     var label = document.getElementById("label4")
     label.innerText = questions[i].d
 
-    i++
+    i++;
     correctAnswer = questions[i].correct
     console.log(correctAnswer) // This is printing out
+    console.log(correctAnswer + 'is the correct answer')
 
     answer.addEventListener("click", function(){
         console.log(event)  //"unable to get property add event listener"
         var chosenAnswer = event.target.value;
+        console.log(chosenAnswer + 'is the chosenAnswer')
 
+        //var answerChoices = document.getElementsByClassName("choices")
+        //console.log(answerChoices)
 
-    if(chosenAnswer == correctAnsewr) {               //should this be inside the event listener?
-        // do something
-        console.log("executed chosenAnswer is true")
+       //for(var j = 0; j<answerChoices.length; j++){
+
+       //answerChoices[j].checked = false
+
+    if(chosenAnswer = correctAnswer[i]) {               
+        // increment the high score count
+        // print correct
+        console.log("executed chosenAnswer is the correct answer")
+        alert("executed chosenAnswer is the correct answer");
     } else {
-        // do something else
+        // decrement the timer, do not increment the high score and print wrong
+        // alert("wrong");
     } // end of if statement
+     
     
+           
+    }) //end of button.addEventListener function
+
+    document.querySelector('input[type=radio]:checked').checked = false;
 
     }) //end of answer.addEventListener function
-    document.querySelector('input[type=radio]:checked').checked = false;
-    }) //end of button.addEventListener function
+        
+
+        
 } //end of startgame function
 
 
@@ -112,7 +129,7 @@ startquizEl.addEventListener("click", function() { //Start Quiz button actions u
 )
 
 
-highscorecountEl.addEventListener("click", function() { //High Score count button actions upon click
-    setCounterText();
-    console.log("executed set counter text");
-})
+// highscorecountEl.addEventListener("click", function() { //High Score count button actions upon click
+//     setCounterText();
+//     console.log("executed set counter text");
+// })
