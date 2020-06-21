@@ -137,7 +137,7 @@ function starttimer() { //Start Timer function; called by Start Game button
 
     console.log("executed start timer")
 
-    timeLeft = 45
+    timeLeft = 75
     initialinput = 'LF';
 
     var timeInterval = setInterval(function () {
