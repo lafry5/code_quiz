@@ -198,7 +198,7 @@ document.querySelectorAll('.choices').forEach(item => {
 
         if (chosenAnswer == correctAnswer) {
             highscorecount++; // increment the high score count
-            // alert("correct"); // print correct
+            alert("correct"); // print correct
             console.log(highscorecount)
             // alert("executed chosenAnswer is the correct answer");
         } else {
