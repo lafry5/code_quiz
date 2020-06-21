@@ -86,11 +86,13 @@ function startgame() { //Start Game Function; called by Start Quiz function
     console.log(correctAnswer) // This is printing out
     console.log(correctAnswer + 'is the correct answer')
 
-    answer.addEventListener("click", function(){
-        console.log(event)  //"unable to get property add event listener"
-        var chosenAnswer = event.target.value;
+    document.querySelectorAll('.choices').forEach(item => {
+        item.addEventListener('click', event => {
+        // console.log(event)  //"unable to get property add event listener"
+        var chosenAnswer = event.target.dataset.answer;
         console.log(chosenAnswer + 'is the chosenAnswer')
 
+        
         //var answerChoices = document.getElementsByClassName("choices")
         //console.log(answerChoices)
 
@@ -98,21 +100,24 @@ function startgame() { //Start Game Function; called by Start Quiz function
 
        //answerChoices[j].checked = false
 
-    if(chosenAnswer = correctAnswer[i]) {               
-        // increment the high score count
-        // print correct
+    if(chosenAnswer = correctAnswer) {               
+        highscorecount++; // increment the high score count
+        // alert("correct"); // print correct
         console.log("executed chosenAnswer is the correct answer")
-        alert("executed chosenAnswer is the correct answer");
+        // alert("executed chosenAnswer is the correct answer");
     } else {
-        // decrement the timer, do not increment the high score and print wrong
-        // alert("wrong");
+        timeLeft = timeLeft - 10; // decrement the timer, do not increment the high score and print wrong
+        alert("wrong");
     } // end of if statement
      
+          //handle click
+        })
+    })
     
            
-    }) //end of button.addEventListener function
+    // }) //end of button.addEventListener function
 
-    document.querySelector('input[type=radio]:checked').checked = false;
+    document.querySelector('input[type=radio]').checked = false;
 
     }) //end of answer.addEventListener function
         
