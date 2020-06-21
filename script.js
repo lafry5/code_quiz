@@ -2,6 +2,7 @@ var highscorecount = 0;
 var chosenAnswer = true;
 var answer = document.querySelector(".choices");
 console.log(answer);
+initialinput = 0;
 
 
 var startquizEl = document.querySelector("#startquiz");
@@ -106,30 +107,38 @@ var questions = [ //these are the questions and answers
         correct: "a"
     },
     {
-        q: "TBD",
+        q: "An alert prompt puts the results in the console log",
         a: "True",
         b: "False",
         c: "empty",
         d: "empty",
-        correct: "a"
+        correct: "b"
     },
 
 ]
 
 var timeLeft;
 
+function initials() {
+   // document.getElementById("questionsection").style.display = "none";
+    var initialinput = prompt('What are your initials?');
+    console.log(initialinput);
+    alert('High score is ' + initialinput + '-' + highscorecount + '.');
+}
+
 function setCounterText() { // Set Counter function; called by High Score Count button
     highscorecountEl.textContent = highscorecount;
     highscorecountEl.textContent = highscorecount + ' high score';
     console.log(highscorecount);
-
+    initials();
 }
 
 function starttimer() { //Start Timer function; called by Start Game button
 
     console.log("executed start timer")
 
-    timeLeft = 75
+    timeLeft = 45
+    initialinput = 'LF';
 
     var timeInterval = setInterval(function () {
         timerEl.textContent = timeLeft + ' seconds remaining';
@@ -140,8 +149,9 @@ function starttimer() { //Start Timer function; called by Start Game button
         if (timeLeft <= 0) {
             timerEl.textContent = '';
             clearInterval(timeInterval)
+            // document.getElementById("questionsection").style.display = "none";
             setCounterText(); //print out high score !!
-        }
+      }
     }, 1000)
 
 }
@@ -150,14 +160,12 @@ function startgame() { //Start Game Function; called by Start Quiz function
 
     i = 0;
     document.getElementById("info").style.display = "none";
-     // Next Question button
-    //} //end of for loop      
 } //end of startgame function
 
 var button = document.getElementById("test")
 button.addEventListener("click", function () { // Start Quiz button?
 
-    //    for(i=0; i<25; i++) {
+
     var question = document.getElementById("question")
     question.innerText = questions[i].q
 
@@ -179,7 +187,7 @@ button.addEventListener("click", function () { // Start Quiz button?
 
     document.querySelector('input[type=radio]').checked = false;
 
-}) //end of answer.addEventListener function?? Need }?
+}) 
 
 
 document.querySelectorAll('.choices').forEach(item => {
@@ -191,24 +199,20 @@ document.querySelectorAll('.choices').forEach(item => {
 
         //var answerChoices = document.getElementsByClassName("choices")
         //console.log(answerChoices)
-
         //for(var j = 0; j<answerChoices.length; j++){
-
         //answerChoices[j].checked = false
 
         if (chosenAnswer == correctAnswer) {
-            highscorecount++; // increment the high score count
-            alert("correct"); // print correct
+            highscorecount++; 
+            alert("correct"); 
             console.log(highscorecount)
-            // alert("executed chosenAnswer is the correct answer");
         } else {
-            timeLeft = timeLeft - 10; // decrement the timer, do not increment the high score and print wrong
+            timeLeft = timeLeft - 10; // decrement the timer, do not increment the high score 
             alert("wrong");
-        } // end of if statement
+        } 
 
-        //handle click
-    }) // end of addEventListener 'click' for chosenAnswer ??
-}) // end of ??
+    }) 
+}) 
 
 startquizEl.addEventListener("click", function () { //Start Quiz button actions upon click
     starttimer();
