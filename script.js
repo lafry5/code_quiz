@@ -3,11 +3,12 @@ var chosenAnswer = true;
 var answer = document.querySelector(".choices");
 console.log(answer);
 initialinput = 0;
-
+var i = 0;
 
 var startquizEl = document.querySelector("#startquiz");
 var highscorecountEl = document.querySelector("#highscorecount");
 var timerEl = document.getElementById('timeremaining')
+var questionEl = document.getElementById("questionsection");
 
 var questions = [ //these are the questions and answers
     {
@@ -113,17 +114,23 @@ var questions = [ //these are the questions and answers
         c: "empty",
         d: "empty",
         correct: "b"
-    },
-
+    }
 ]
 
 var timeLeft;
 
-function initials() {
+startquizEl.addEventListener("click", function () { //Start Quiz button action upon click of Start Quiz button
+    starttimer();  // calls start timer, and 
+    startgame();   // start game
+    console.log("executed start quiz");
+})
+
+function initials() {  // Initials function
    // document.getElementById("questionsection").style.display = "none";
     var initialinput = prompt('What are your initials?');
     console.log(initialinput);
-    alert('High score is ' + initialinput + '-' + highscorecount + '.');
+    highscorecountEl.textContent = 'High score is ' + initialinput + '-' + highscorecount + '.';
+   // alert('High score is ' + initialinput + '-' + highscorecount + '.');
 }
 
 function setCounterText() { // Set Counter function; called by High Score Count button
@@ -145,7 +152,6 @@ function starttimer() { //Start Timer function; called by Start Game button
 
         timeLeft--
 
-
         if (timeLeft <= 0) {
             timerEl.textContent = '';
             clearInterval(timeInterval)
@@ -158,49 +164,37 @@ function starttimer() { //Start Timer function; called by Start Game button
 
 function startgame() { //Start Game Function; called by Start Quiz function
 
-    i = 0;
-    document.getElementById("info").style.display = "none";
+   document.getElementById("info").style.display = "none";
+
+    // un-hide questions section
+    questionEl.removeAttribute("class");
+
+  //     if(i<=questions.length) {
+            
+           document.querySelector('input[type=radio]').checked = false;  // how to deselect radio button
+
+           nextquestion();
+  //     } else {
+  //         setCounterText();
+  //     }
+  //      } // end of if
+
 } //end of startgame function
 
-var button = document.getElementById("test")
-button.addEventListener("click", function () { // Start Quiz button?
 
-
-    var question = document.getElementById("question")
-    question.innerText = questions[i].q
-
-    var label = document.getElementById("label1")
-    label.innerText = questions[i].a
-
-    var label = document.getElementById("label2")
-    label.innerText = questions[i].b
-
-    var label = document.getElementById("label3")
-    label.innerText = questions[i].c
-
-    var label = document.getElementById("label4")
-    label.innerText = questions[i].d
-
-
-    correctAnswer = questions[i].correct;
-    i++;
-
-    document.querySelector('input[type=radio]').checked = false;
-
-}) 
+ 
 
 
 document.querySelectorAll('.choices').forEach(item => {
     item.addEventListener('click', event => {
         // console.log(event)  
+        j = 0;
         var chosenAnswer = event.target.dataset.answer;
         console.log(chosenAnswer + ' is the chosenAnswer')
 
+        correctAnswer = questions[i].correct;
 
-        //var answerChoices = document.getElementsByClassName("choices")
-        //console.log(answerChoices)
-        //for(var j = 0; j<answerChoices.length; j++){
-        //answerChoices[j].checked = false
+
 
         if (chosenAnswer == correctAnswer) {
             highscorecount++; 
@@ -211,17 +205,34 @@ document.querySelectorAll('.choices').forEach(item => {
             alert("wrong");
         } 
 
-    }) 
+        
+        i++;
+
+        document.querySelector('input[type=radio]').checked = false;  // how to deselect radio button
+
+        nextquestion();
+   }) 
 }) 
 
-startquizEl.addEventListener("click", function () { //Start Quiz button actions upon click
-    starttimer();
-    startgame();
-    console.log("executed start quiz");
-})
 
+function nextquestion() { //Next question function 
+    var question = document.getElementById("question")
+    console.log("question", question);
+    question.innerText = questions[i].q
 
-// highscorecountEl.addEventListener("click", function() { //High Score count button actions upon click
-//     setCounterText();
-//     console.log("executed set counter text");
-// })
+    var label = document.getElementById("label1")
+    console.log("labela", label);
+    label.innerText = questions[i].a
+  
+    var label = document.getElementById("label2")
+    console.log("labelb", label);
+    label.innerText = questions[i].b
+
+    var label = document.getElementById("label3")
+    label.innerText = questions[i].c
+
+    var label = document.getElementById("label4")
+    label.innerText = questions[i].d
+    
+}
+
