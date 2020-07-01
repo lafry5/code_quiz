@@ -7,8 +7,9 @@ var i = 0;
 
 var startquizEl = document.querySelector("#startquiz");
 var highscorecountEl = document.querySelector("#highscorecount");
-var timerEl = document.getElementById('timeremaining')
+var timerEl = document.getElementById('timeremaining');
 var questionEl = document.getElementById("questionsection");
+var correctEl = document.getElementById('correct');
 
 var questions = [ //these are the questions and answers
     {
@@ -194,17 +195,24 @@ document.querySelectorAll('.choices').forEach(item => {
 
         correctAnswer = questions[i].correct;
 
-
+        
 
         if (chosenAnswer == correctAnswer) {
-            highscorecount++; 
-            alert("correct"); 
+            highscorecount++;
+            var correctEl = document.getElementById('correct');
+            correctEl.textContent = 'Correct';  
+            console.log(chosenAnswer);
+           // alert("correct"); // trying to replace this with an <h5>
             console.log(highscorecount)
         } else {
             timeLeft = timeLeft - 10; // decrement the timer, do not increment the high score 
-            alert("wrong");
+            var correctEl = document.getElementById('correct');
+            correctEl.textContent = 'Wrong';  
+            console.log(chosenAnswer);
+           // alert("wrong"); // trying to replace this with an <h5>
         } 
 
+        correctEl
         
         i++;
 
